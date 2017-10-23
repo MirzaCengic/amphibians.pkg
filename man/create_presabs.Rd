@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_presabs.R
 \name{create_presabs}
 \alias{create_presabs}
-\title{Title}
+\title{Create presence/pseudoabsence dataframe.}
 \usage{
 create_presabs(input_species_range, target_resolution, write_output = "FALSE")
 }
@@ -17,5 +17,5 @@ create_presabs(input_species_range, target_resolution, write_output = "FALSE")
 Returns nothing, writes csv with presence and pseudo-absence coordinates.
 }
 \description{
-Title
+Create presence/pseudoabsence dataframe.
 }

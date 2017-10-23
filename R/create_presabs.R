@@ -9,7 +9,7 @@
 # If there are fewer than 30 points for given resolution, the resolution is
 # lowered. Add check for resolution before this function
 
-#' Title
+#' Create presence/pseudoabsence dataframe.
 #'
 #' @param input_species_range Simple feature of the species range.
 #' @param target_resolution Output of check_processing_resolution()
