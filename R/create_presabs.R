@@ -11,15 +11,16 @@
 
 #' Title
 #'
-#' @param input_species_range Raster file of species range; usually output of fasterize.
+#' @param input_species_range Simple feature of the species range.
 #' @param target_resolution Output of check_processing_resolution()
+#' @param write_output If TRUE, stores the presence-absence dataframe to disk. Default is FALSE.
 #'
 #' @return Returns nothing, writes csv with presence and pseudo-absence coordinates.
 #' @export
 #'
 #' @examples
 
-create_PA <- function(input_species_range, target_resolution)
+create_presabs <- function(input_species_range, target_resolution, write_output = "FALSE")
 {
 
   stopifnot(target_resolution %in% c("10m", "5m", "2.5m", "30s", "Insufficient"))
@@ -92,8 +93,10 @@ create_PA <- function(input_species_range, target_resolution)
 
   sp_presabs <- rbind(occ_pts, pas)
 
-
+if (isTRUE(write_output))
+  {
   write_csv(sp_presabs, outfile)
+  }
 
-  cat("-=-=-=-=-=-", "\n")
+  return(sp_presabs)
 }
