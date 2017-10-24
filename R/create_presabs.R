@@ -9,6 +9,8 @@
 # If there are fewer than 30 points for given resolution, the resolution is
 # lowered. Add check for resolution before this function
 
+# NOTE: move hardcoded paths and saving of output outside of the function!
+
 #' Create presence/pseudoabsence dataframe.
 #'
 #' @param input_species_range Simple feature of the species range.
@@ -25,7 +27,10 @@ create_presabs <- function(input_species_range, target_resolution, write_output 
 
   stopifnot(target_resolution %in% c("10m", "5m", "2.5m", "30s", "Insufficient"))
 
-  if (target_resolution == "Insufficient") {break("Resolution insufficient")}
+  if (target_resolution == "Insufficient") {
+
+    break("Resolution insufficient")
+    }
 
   # stopifnot()
 
@@ -55,7 +60,7 @@ create_presabs <- function(input_species_range, target_resolution, write_output 
   #### Create pseudoabsences ####
   # print("Calculating species mask")
   sp_mask <- mask(continent_raster, range_sp) #select continent code overlaping with range
-  mask_v <- unique(sp_mask)
+  mask_v <- raster::unique(sp_mask)
   #codes of continents for species range
   # print("Calculating continents")
   continent_raster2 <- Which(continent_raster %in% mask_v)
